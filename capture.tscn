@@ -1,0 +1,98 @@
+[gd_scene load_steps=9 format=3 uid="uid://b5igimq3fp7k7"]
+
+[ext_resource type="PackedScene" uid="uid://cxfbyvfx08a6b" path="res://assets/hands/gltf/left_hand.gltf" id="1_1qkar"]
+[ext_resource type="Script" path="res://capture.gd" id="1_4pn4c"]
+[ext_resource type="PackedScene" uid="uid://de58v7rdr3edu" path="res://assets/hands/gltf/right_hand.gltf" id="3_jvb0t"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_e2esh"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_kv5i8"]
+sky_material = SubResource("ProceduralSkyMaterial_e2esh")
+
+[sub_resource type="Environment" id="Environment_jelt0"]
+background_mode = 2
+sky = SubResource("Sky_kv5i8")
+ambient_light_source = 2
+ambient_light_color = Color(0.254902, 0.254902, 0.254902, 1)
+tonemap_mode = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ld70x"]
+radius = 0.01
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gyky5"]
+size = Vector3(0.4, 0.1, 0.1)
+
+[node name="Capture" type="Node3D"]
+script = ExtResource("1_4pn4c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jelt0")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="OpenXRHandLeft" type="OpenXRHand" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.2, -0.3)
+hand_skeleton = NodePath("LeftHand/LeftHandOpenXR/Skeleton3D")
+
+[node name="LeftHand" parent="XROrigin3D/OpenXRHandLeft" instance=ExtResource("1_1qkar")]
+unique_name_in_owner = true
+
+[node name="OpenXRHandRight" type="OpenXRHand" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.2, -0.3)
+hand = 1
+hand_skeleton = NodePath("right_hand/RightHandOpenXR/Skeleton3D")
+
+[node name="right_hand" parent="XROrigin3D/OpenXRHandRight" instance=ExtResource("3_jvb0t")]
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D" index="1"]
+transform = Transform3D(-0.0190381, 0.919474, 0.392689, -0.993227, 0.027632, -0.112853, -0.114616, -0.392178, 0.912721, 0.014773, 0.044943, -0.118613)
+bone_name = "Index_Tip_R"
+bone_idx = 9
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D/BoneAttachment3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D/BoneAttachment3D/Area3D"]
+shape = SubResource("SphereShape3D_ld70x")
+
+[node name="LeftMirrorHand" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="left_hand" parent="LeftMirrorHand" instance=ExtResource("1_1qkar")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="LeftMirrorHand"]
+root_node = NodePath("../left_hand/LeftHandOpenXR/Skeleton3D")
+
+[node name="RightMirrorHand" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="right_hand" parent="RightMirrorHand" instance=ExtResource("3_jvb0t")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="RightMirrorHand"]
+root_node = NodePath("../right_hand/RightHandOpenXR/Skeleton3D")
+
+[node name="SaveArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.5, -0.6)
+
+[node name="SaveLabel" type="Label3D" parent="SaveArea"]
+unique_name_in_owner = true
+pixel_size = 0.002
+text = "Save: pose_1"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SaveArea"]
+shape = SubResource("BoxShape3D_gyky5")
+
+[connection signal="area_entered" from="SaveArea" to="." method="_on_save_area_area_entered"]
+
+[editable path="XROrigin3D/OpenXRHandLeft/LeftHand"]
+[editable path="XROrigin3D/OpenXRHandRight/right_hand"]
+[editable path="LeftMirrorHand/left_hand"]
+[editable path="RightMirrorHand/right_hand"]
