@@ -18,8 +18,8 @@ ambient_light_source = 2
 ambient_light_color = Color(0.254902, 0.254902, 0.254902, 1)
 tonemap_mode = 2
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ld70x"]
-radius = 0.01
+[sub_resource type="SphereShape3D" id="SphereShape3D_0rcsk"]
+radius = 0.008
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_gyky5"]
 size = Vector3(0.4, 0.1, 0.1)
@@ -41,43 +41,205 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="OpenXRHandLeft" type="OpenXRHand" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 1.2, -0.3)
-hand_skeleton = NodePath("LeftHand/LeftHandOpenXR/Skeleton3D")
+hand_skeleton = NodePath("LeftHand/LeftHand/Skeleton3D")
 
 [node name="LeftHand" parent="XROrigin3D/OpenXRHandLeft" instance=ExtResource("1_1qkar")]
 unique_name_in_owner = true
 
+[node name="Skeleton3D" parent="XROrigin3D/OpenXRHandLeft/LeftHand/LeftHand" index="0"]
+bones/0/rotation = Quaternion(0.0839701, 0.0773095, 0.701722, 0.703248)
+bones/0/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0104203, 0.00615695, 0.0212979, 0.9997)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00160222, 0.0287769, 0.000214181, 0.999585)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.130749, -0.00369808, -0.0163225, 0.991274)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0674749, -0.0828272, 0.00931224, 0.994233)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.164417, 0.000234538, 0.01357, 0.986298)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0714173, 0.00126853, 0.00485688, 0.997434)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0189289, -0.00721003, -0.00016213, 0.999795)
+bones/11/rotation = Quaternion(0.113847, -0.00374325, -0.00218375, 0.993489)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.0949667, 0.0709563, -0.00560957, 0.992933)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.119912, -0.051773, -0.00703405, 0.991409)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.0301896, 0.00969545, 0.00218391, 0.999495)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0303941, 0.0229957, 0.000260552, 0.999273)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0928977, 0.0132687, 0.0234353, 0.995311)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.0521302, 0.10961, -0.00824514, 0.992573)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.129236, -0.0132663, -0.0150673, 0.991411)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.0540193, 0.0153477, -0.00351886, 0.998416)
+bones/20/rotation = Quaternion(0.0147574, -0.00522094, -0.00106962, 0.999877)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.0601629, 0.124765, 0.0870654, 0.986526)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.053445, 0.0682277, -0.0120472, 0.996164)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.141914, -0.00336661, -0.0268209, 0.98951)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.077732, 0.00274803, -0.0102438, 0.996918)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.0263803, 0.00406559, -0.00200382, 0.999642)
+
 [node name="OpenXRHandRight" type="OpenXRHand" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 1.2, -0.3)
 hand = 1
-hand_skeleton = NodePath("right_hand/RightHandOpenXR/Skeleton3D")
+hand_skeleton = NodePath("right_hand/RightHand/Skeleton3D")
 
 [node name="right_hand" parent="XROrigin3D/OpenXRHandRight" instance=ExtResource("3_jvb0t")]
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D" index="1"]
-transform = Transform3D(-0.0190381, 0.919474, 0.392689, -0.993227, 0.027632, -0.112853, -0.114616, -0.392178, 0.912721, 0.014773, 0.044943, -0.118613)
+[node name="Skeleton3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHand" index="0"]
+bones/0/rotation = Quaternion(0.083841, -0.077446, -0.700941, 0.704028)
+bones/1/rotation = Quaternion(-0.114036, -0.00369352, -0.00227811, 0.993467)
+bones/2/rotation = Quaternion(0.063558, 0.311401, 0.506949, 0.801244)
+bones/3/rotation = Quaternion(-0.0095087, -0.00749192, -0.0173324, 0.999777)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0281105, -0.00593785, -0.00310056, 0.999582)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00476138, -0.0284252, 0.0167085, 0.999445)
+bones/6/rotation = Quaternion(0.130757, 0.00346249, 0.018093, 0.991243)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0664397, 0.0836604, -0.000510876, 0.994277)
+bones/8/rotation = Quaternion(-0.164413, -0.00135897, -0.0412873, 0.985526)
+bones/9/rotation = Quaternion(-0.0712833, -0.00456275, -0.0160088, 0.997317)
+bones/10/rotation = Quaternion(0.0184897, 0.00827189, 0.000775053, 0.999795)
+bones/11/rotation = Quaternion(0.113852, 0.0036152, 0.00328713, 0.993486)
+bones/12/rotation = Quaternion(-0.0948665, -0.0710892, 0.00199858, 0.992946)
+bones/13/rotation = Quaternion(-0.119884, 0.0518355, 0.0125683, 0.991354)
+bones/14/rotation = Quaternion(-0.0302823, -0.00940321, 0.00139887, 0.999496)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0300118, -0.0234926, 0.00293031, 0.999269)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0929312, -0.0130127, -0.0261891, 0.995243)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.0509011, -0.110185, 0.00262864, 0.992603)
+bones/18/rotation = Quaternion(-0.129077, 0.0147167, 0.0429024, 0.990597)
+bones/19/rotation = Quaternion(-0.0547822, -0.012349, 0.0193055, 0.998235)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.0150693, 0.00423738, -0.00391627, 0.99987)
+bones/21/rotation = Quaternion(0.0617277, -0.123994, -0.0995599, 0.985344)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.141476, 0.0116083, 0.0721057, 0.987244)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.0774515, 0.00713446, 0.0334278, 0.99641)
+bones/25/rotation = Quaternion(0.0255153, -0.00783815, -0.00331429, 0.999638)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHand/Skeleton3D" index="1"]
+transform = Transform3D(-0.0468709, 0.949524, 0.310175, -0.986027, 0.00571127, -0.166484, -0.159852, -0.313644, 0.935989, 0.0173011, 0.0413053, -0.122494)
 bone_name = "Index_Tip_R"
-bone_idx = 9
+bone_idx = 10
 
-[node name="Area3D" type="Area3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D/BoneAttachment3D"]
+[node name="Area3D" type="Area3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHand/Skeleton3D/BoneAttachment3D"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHandOpenXR/Skeleton3D/BoneAttachment3D/Area3D"]
-shape = SubResource("SphereShape3D_ld70x")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/OpenXRHandRight/right_hand/RightHand/Skeleton3D/BoneAttachment3D/Area3D"]
+shape = SubResource("SphereShape3D_0rcsk")
 
 [node name="LeftMirrorHand" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="left_hand" parent="LeftMirrorHand" instance=ExtResource("1_1qkar")]
 
+[node name="Skeleton3D" parent="LeftMirrorHand/left_hand/LeftHand" index="0"]
+bones/0/rotation = Quaternion(0.0839701, 0.0773095, 0.701722, 0.703248)
+bones/0/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(-0.0104203, 0.00615695, 0.0212979, 0.9997)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00160222, 0.0287769, 0.000214181, 0.999585)
+bones/5/scale = Vector3(1, 1, 1)
+bones/6/rotation = Quaternion(0.130749, -0.00369808, -0.0163225, 0.991274)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0674749, -0.0828272, 0.00931224, 0.994233)
+bones/7/scale = Vector3(1, 1, 1)
+bones/8/rotation = Quaternion(-0.164417, 0.000234538, 0.01357, 0.986298)
+bones/8/scale = Vector3(1, 1, 1)
+bones/9/rotation = Quaternion(-0.0714173, 0.00126853, 0.00485688, 0.997434)
+bones/9/scale = Vector3(1, 1, 1)
+bones/10/rotation = Quaternion(0.0189289, -0.00721003, -0.00016213, 0.999795)
+bones/11/rotation = Quaternion(0.113847, -0.00374325, -0.00218375, 0.993489)
+bones/11/scale = Vector3(1, 1, 1)
+bones/12/rotation = Quaternion(-0.0949667, 0.0709563, -0.00560957, 0.992933)
+bones/12/scale = Vector3(1, 1, 1)
+bones/13/rotation = Quaternion(-0.119912, -0.051773, -0.00703405, 0.991409)
+bones/13/scale = Vector3(1, 1, 1)
+bones/14/rotation = Quaternion(-0.0301896, 0.00969545, 0.00218391, 0.999495)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0303941, 0.0229957, 0.000260552, 0.999273)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0928977, 0.0132687, 0.0234353, 0.995311)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.0521302, 0.10961, -0.00824514, 0.992573)
+bones/17/scale = Vector3(1, 1, 1)
+bones/18/rotation = Quaternion(-0.129236, -0.0132663, -0.0150673, 0.991411)
+bones/18/scale = Vector3(1, 1, 1)
+bones/19/rotation = Quaternion(-0.0540193, 0.0153477, -0.00351886, 0.998416)
+bones/20/rotation = Quaternion(0.0147574, -0.00522094, -0.00106962, 0.999877)
+bones/20/scale = Vector3(1, 1, 1)
+bones/21/rotation = Quaternion(0.0601629, 0.124765, 0.0870654, 0.986526)
+bones/21/scale = Vector3(1, 1, 1)
+bones/22/rotation = Quaternion(-0.053445, 0.0682277, -0.0120472, 0.996164)
+bones/22/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.141914, -0.00336661, -0.0268209, 0.98951)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.077732, 0.00274803, -0.0102438, 0.996918)
+bones/24/scale = Vector3(1, 1, 1)
+bones/25/rotation = Quaternion(0.0263803, 0.00406559, -0.00200382, 0.999642)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="LeftMirrorHand"]
-root_node = NodePath("../left_hand/LeftHandOpenXR/Skeleton3D")
+root_node = NodePath("../left_hand/LeftHand/Skeleton3D")
 
 [node name="RightMirrorHand" type="Node3D" parent="."]
 unique_name_in_owner = true
 
 [node name="right_hand" parent="RightMirrorHand" instance=ExtResource("3_jvb0t")]
 
+[node name="Skeleton3D" parent="RightMirrorHand/right_hand/RightHand" index="0"]
+bones/0/rotation = Quaternion(0.083841, -0.077446, -0.700941, 0.704028)
+bones/1/rotation = Quaternion(-0.114036, -0.00369352, -0.00227811, 0.993467)
+bones/2/rotation = Quaternion(0.063558, 0.311401, 0.506949, 0.801244)
+bones/3/rotation = Quaternion(-0.0095087, -0.00749192, -0.0173324, 0.999777)
+bones/3/scale = Vector3(1, 1, 1)
+bones/4/rotation = Quaternion(-0.0281105, -0.00593785, -0.00310056, 0.999582)
+bones/4/scale = Vector3(1, 1, 1)
+bones/5/rotation = Quaternion(0.00476138, -0.0284252, 0.0167085, 0.999445)
+bones/6/rotation = Quaternion(0.130757, 0.00346249, 0.018093, 0.991243)
+bones/6/scale = Vector3(1, 1, 1)
+bones/7/rotation = Quaternion(-0.0664397, 0.0836604, -0.000510876, 0.994277)
+bones/8/rotation = Quaternion(-0.164413, -0.00135897, -0.0412873, 0.985526)
+bones/9/rotation = Quaternion(-0.0712833, -0.00456275, -0.0160088, 0.997317)
+bones/10/rotation = Quaternion(0.0184897, 0.00827189, 0.000775053, 0.999795)
+bones/11/rotation = Quaternion(0.113852, 0.0036152, 0.00328713, 0.993486)
+bones/12/rotation = Quaternion(-0.0948665, -0.0710892, 0.00199858, 0.992946)
+bones/13/rotation = Quaternion(-0.119884, 0.0518355, 0.0125683, 0.991354)
+bones/14/rotation = Quaternion(-0.0302823, -0.00940321, 0.00139887, 0.999496)
+bones/14/scale = Vector3(1, 1, 1)
+bones/15/rotation = Quaternion(0.0300118, -0.0234926, 0.00293031, 0.999269)
+bones/15/scale = Vector3(1, 1, 1)
+bones/16/rotation = Quaternion(0.0929312, -0.0130127, -0.0261891, 0.995243)
+bones/16/scale = Vector3(1, 1, 1)
+bones/17/rotation = Quaternion(-0.0509011, -0.110185, 0.00262864, 0.992603)
+bones/18/rotation = Quaternion(-0.129077, 0.0147167, 0.0429024, 0.990597)
+bones/19/rotation = Quaternion(-0.0547822, -0.012349, 0.0193055, 0.998235)
+bones/19/scale = Vector3(1, 1, 1)
+bones/20/rotation = Quaternion(0.0150693, 0.00423738, -0.00391627, 0.99987)
+bones/21/rotation = Quaternion(0.0617277, -0.123994, -0.0995599, 0.985344)
+bones/21/scale = Vector3(1, 1, 1)
+bones/23/rotation = Quaternion(-0.141476, 0.0116083, 0.0721057, 0.987244)
+bones/23/scale = Vector3(1, 1, 1)
+bones/24/rotation = Quaternion(-0.0774515, 0.00713446, 0.0334278, 0.99641)
+bones/25/rotation = Quaternion(0.0255153, -0.00783815, -0.00331429, 0.999638)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="RightMirrorHand"]
-root_node = NodePath("../right_hand/RightHandOpenXR/Skeleton3D")
+root_node = NodePath("../right_hand/RightHand/Skeleton3D")
 
 [node name="SaveArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 1.5, -0.6)

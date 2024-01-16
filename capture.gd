@@ -2,7 +2,7 @@ extends Node3D
 
 
 @onready var _hand : Node3D = %LeftHand
-@onready var _skeleton : Skeleton3D = %LeftHand/LeftHandOpenXR/Skeleton3D
+@onready var _skeleton : Skeleton3D = %LeftHand/LeftHand/Skeleton3D
 @onready var _left_mirror : Node3D = %LeftMirrorHand
 @onready var _right_mirror : Node3D = %RightMirrorHand
 @onready var _left_player : AnimationPlayer = %LeftMirrorHand/AnimationPlayer
@@ -39,9 +39,9 @@ func _ready() -> void:
 
 func _process(delta : float) -> void:
 	# Update the mirror hands
-	_left_mirror.global_position = _hand.global_position + Vector3(0.0, 0.2, 0.0)
+	_left_mirror.global_position = _hand.global_position + Vector3(0.2, 0, 0.0)
 	_left_mirror.global_rotation = _hand.global_rotation
-	_right_mirror.global_position = _hand.global_position + Vector3(0.2, 0.2, 0.0)
+	_right_mirror.global_position = _hand.global_position + Vector3(0.4, 0.0, 0.0)
 	_right_mirror.global_rotation = _hand.global_rotation * Basis(Vector3.LEFT, PI)
 
 	# Copy the animation bones
